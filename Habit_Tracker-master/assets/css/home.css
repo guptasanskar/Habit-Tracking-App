@@ -1,0 +1,42 @@
+*{
+    font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.half{
+    width: 40%;
+}
+
+.sixty{
+    width:60%;
+    height:38px;
+}
+
+.w-6{
+    width:60%;
+}
+.my-4y{
+
+    margin-top:2.2rem;
+    margin-bottom:2.2rem;
+}
+.ms-6 {
+    margin-left: 4rem ;
+  }
+
+
+  /* resposnsive css code */
+@media (max-width: 830px) { 
+    #input-form{
+        width:90%;
+    }
+
+    .w-6{
+        width:90%;
+    }
+ }
+
+ @media (max-width: 750px) { 
+    #input-form{
+        width:100%;
+    }
+}

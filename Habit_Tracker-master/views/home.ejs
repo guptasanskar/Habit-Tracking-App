@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <!-- css link -->
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- bootstrap css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+      <!-- navbar body -->
+    <%- include("header") -%>
+
+    <!-- add habit form body -->
+    <div id="input-form" class="border border-secondary half mx-auto mt-5 " >
+        <div class="border-bottom border-secondary">
+            <h3 class="text-center my-3" >Let's Start a new Habit</h3>
+        </div>
+        <form class="text-center my-4 p-2" action="create/habit" method="POST">
+            <input class="sixty" type="text" placeholder="Enter Habit" name="name">
+            <button class="btn btn-dark mx-3" type="submit">Add Habit</button>
+        </form>
+    </div>
+
+    <!-- habits container -->
+    <main class="border border-secondary w-6 mx-auto my-5 p-4">
+        <h1  class="text-center my-auto border-bottom border-secondary p-3" >Habits</h1>
+
+        <div class="text-center my-4y">
+            <% if(habitList.length===0) {%>
+                Soory!<br> You have no Habits, Try adding one.
+              <%}%>
+        </div>
+        
+        <% for(let i of habitList) { %>
+            <div class="card mb-3 mx-auto  " style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-6 my-auto ">
+                    <h3 class="card-title text-center"><%= i.Name %> </h3>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-body">
+                      <p class="card-text text-center">Completed: <%= i.Completed %> / <%= i.Days.length %> </p>
+                      <p class="card-text text-center">Longest Streak:<%= i.Streak %></p>
+                      <a class="btn btn-danger ms-6" href="/delete/<%= i.id %>">Delete</a> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <% } %>
+    </main>
+    
+    <!-- bootstrap js link -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
